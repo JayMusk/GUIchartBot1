@@ -1,1 +1,11 @@
-﻿
+CREATE DATABASE IF NOT EXISTS cyberchatbot;
+USE cyberchatbot;
+
+CREATE TABLE IF NOT EXISTS tasks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200),
+  description VARCHAR(500),
+  reminderDate DATETIME NULL,
+  isCompleted TINYINT DEFAULT 0,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);﻿
