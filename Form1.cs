@@ -391,5 +391,100 @@ namespace GUIchartBot
         {
 
         }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            engine.Quiz.CheckAnswer(1);
+            ShowQuizQuestion();
+        }
+
+        private void buttonQuiz1_Click(object sender, EventArgs e)
+        {
+            engine.Quiz.CheckAnswer(0);
+            ShowQuizQuestion();
+        }
+        private void buttonStartQuiz_Click(object sender, EventArgs e)
+        {
+            engine.Quiz.StartQuiz();
+            ShowQuizQuestion();
+        }
+
+        private void ShowQuizQuestion()
+        {
+            var q = engine.Quiz.GetCurrentQuestion();
+            if (q == null)
+            {
+                labelQuestion.Text = "Quiz Done! Score: " + engine.Quiz.Score + " / 5";
+                return;
+            }
+
+            labelQuestion.Text = q.Question;
+            labelScore.Text = "Score: " + engine.Quiz.Score + " / 5";
+
+            buttonQuiz1.Text = q.Options[0];
+            buttonQuiz2.Text = q.Options[1];
+            buttonQuiz3.Text = q.Options[2];
+            buttonQuiz4.Text = q.Options[3];
+
+            buttonStartQuiz.Text = "Start!";
+        }
+
+        private void AnswerQuiz(int optionIndex)
+        {
+            bool correct = engine.Quiz.CheckAnswer(optionIndex);
+            if (correct)
+                buttonStartQuiz.Text = "Correct! Click an answer for next question.";
+            else
+                buttonStartQuiz.Text = "Wrong! Click an answer for next question.";
+
+            // wait a second then show next
+            ShowQuizQuestion();
+        }
+        // buttonQuiz1
+
+
+        // buttonQuiz2
+        private void buttonQuiz2_Click(object sender, EventArgs e)
+        {
+            engine.Quiz.CheckAnswer(1);
+            ShowQuizQuestion();
+        }
+
+        // buttonQuiz3
+        private void buttonQuiz3_Click(object sender, EventArgs e)
+        {
+            engine.Quiz.CheckAnswer(2);
+            ShowQuizQuestion();
+        }
+
+        // buttonQuiz4
+        private void buttonQuiz4_Click(object sender, EventArgs e)
+        {
+            engine.Quiz.CheckAnswer(3);
+            ShowQuizQuestion();
+        }
+
+        private void buttonQuiz3_Click_1(object sender, EventArgs e)
+        {
+            engine.Quiz.CheckAnswer(2);
+            ShowQuizQuestion();
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonStartQuiz_Click_1(object sender, EventArgs e)
+        {
+            engine.Quiz.StartQuiz();
+            ShowQuizQuestion();
+        }
+
+        private void buttonQuiz4_Click_1(object sender, EventArgs e)
+        {
+            engine.Quiz.CheckAnswer(3);
+            ShowQuizQuestion();
+        }
     }
 }
